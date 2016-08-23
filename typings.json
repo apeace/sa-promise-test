@@ -2,7 +2,6 @@
   "name": "sa-promise-test",
   "dependencies": {},
   "globalDependencies": {
-    "node": "registry:dt/node#6.0.0+20160709114037",
-    "superagent": "registry:dt/superagent#1.4.0+20160317120654"
+    "node": "registry:dt/node#6.0.0+20160709114037"
   }
 }

@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "description": "",
   "dependencies": {
-    "superagent": "^2.1.0",
-    "superagent-promise": "apeace/superagent-promise#typings"
+    "superagent": "^2.2.0",
+    "superagent-promise": "github:apeace/superagent-promise#typings"
   },
   "devDependencies": {
     "typescript": "^1.8.10",

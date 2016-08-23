@@ -1,8 +1,12 @@
 import * as superagent from 'superagent';
 import * as superagentPromise from 'superagent-promise';
-import {SuperAgentStatic} from 'superagent-promise';
+import {SuperAgent} from 'superagent-promise';
 
-const request = <SuperAgentStatic>superagentPromise(superagent, Promise);
+const request = <SuperAgent>superagentPromise(superagent, Promise);
+
+let get = request.get('http://github.com');
+let set = get.set('X-Awesome', 'superagent-promise');
+let end = set.end();
 
 request
   .get('http://github.com')
