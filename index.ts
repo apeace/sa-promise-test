@@ -1,8 +1,9 @@
+/// <reference path="./typings/index.d.ts" />
+
 import * as superagent from 'superagent';
 import * as superagentPromise from 'superagent-promise';
-import {SuperAgent} from 'superagent-promise';
 
-const request = <SuperAgent>superagentPromise(superagent, Promise);
+const request = superagentPromise(superagent, Promise);
 
 let get = request.get('http://github.com');
 let set = get.set('X-Awesome', 'superagent-promise');
