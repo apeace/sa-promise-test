@@ -50,9 +50,9 @@ class Thing2<T> implements Thingable<T> {
     }
 }
 
-function doThing<V, T extends Thingable<V>>(val: V, func: (val: V) => Thingable<V>): Thingable<V> {
+function doThing<V, T extends Thingable<V>>(val: V, func: (val: V) => T): T {
    return func(val);
 }
 
-doThing(1, v => new Thing1(v)).getThing();
-doThing(1, v => new Thing2(v)).getThing();
+doThing(1, (v: number): Thing1<number> => new Thing1(v)).getThing();
+doThing(1, (v: number): Thing2<number> => new Thing2(v)).getThing();
