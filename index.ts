@@ -3,7 +3,7 @@
 import * as superagent from 'superagent';
 import * as superagentPromise from 'superagent-promise';
 
-const request = superagentPromise(superagent, Promise);
+const request = <superagentPromise.SuperAgent>superagentPromise(superagent, Promise);
 
 let get = request.get('http://github.com');
 let set = get.set('X-Awesome', 'superagent-promise');
@@ -19,3 +19,40 @@ request
   .catch(err => {
     console.error(err);
   });
+
+
+/**
+ * Example of generic function parameter
+ * https://github.com/lightsofapollo/superagent-promise/pull/26#issuecomment-242095668
+ */
+
+interface Thingable<T> {
+    getThing(): T
+}
+
+class Thing1<T> implements Thingable<T> {
+    public thing: T;
+    constructor(t: T) {
+        this.thing = t;
+    }
+    getThing() {
+        return this.thing;
+    }
+}
+
+class Thing2<T> implements Thingable<T> {
+    public thing: T;
+    constructor(t: T) {
+        this.thing = t;
+    }
+    getThing() {
+        return this.thing;
+    }
+}
+
+function doThing<V, T extends Thingable<V>>(val: V, func: (val: V) => Thingable<V>): Thingable<V> {
+   return func(val);
+}
+
+doThing(1, v => new Thing1(v)).getThing();
+doThing(1, v => new Thing2(v)).getThing();
